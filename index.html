@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เกมภารกิจพิชิตโจทย์ปัญหาบัญญัติไตรยางค์ ป.5 (10 ข้อ)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #e2e8f0;
+      --ink: #0f172a;
+      --muted: #475569;
+      --brand: #2563eb;
+      --brand-hover: #1d4ed8;
+      --brand-soft: #eff6ff;
+      --brand-ink: #ffffff;
+      --accent: #f59e0b;
+      --accent-soft: #fef3c7;
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --purple: #7c3aed;
+      --purple-soft: #f3e8ff;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --font: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    .app-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .brand-subtitle {
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .mode-tabs {
+      display: flex;
+      gap: var(--space-2);
+      background: var(--surface-alt);
+      padding: var(--space-1);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--ink);
+    }
+
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--brand);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+
+    .tab-btn:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    /* Stage Progress Strip */
+    .stage-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-6);
+      margin-bottom: var(--space-6);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .stage-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      align-items: center;
+    }
+
+    .stage-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--muted);
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .stage-dot:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .stage-dot.current {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .stage-dot.correct {
+      border-color: var(--success);
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .stage-dot.wrong {
+      border-color: var(--danger);
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .stage-dot.current.correct,
+    .stage-dot.current.wrong {
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.28);
+    }
+
+    .score-pill {
+      background: var(--brand-soft);
+      border: 1px solid #bfdbfe;
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* Card & Question Box */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: var(--space-6);
+    }
+
+    .question-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .stage-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--accent-soft);
+      color: #92400e;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .question-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--brand);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    /* Drag & Drop Workspace */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .bank-panel {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-6);
+    }
+
+    .panel-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .helper-hint {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .bank-groups {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .bank-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .bank-row-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 120px;
+    }
+
+    .drag-tile {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      min-height: 54px;
+      padding: 6px 16px;
+      border-radius: var(--radius-sm);
+      border: 2px solid #cbd5e1;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: grab;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+      transition: all 0.15s ease;
+    }
+
+    /* Vertical Fraction Styling */
+    .v-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      line-height: 1.05;
+      margin: 0 4px;
+      font-weight: 800;
+      pointer-events: none;
+    }
+
+    .v-frac .v-num {
+      padding: 0 6px 2px;
+      border-bottom: 2px solid currentColor;
+      display: block;
+      text-align: center;
+      min-width: 24px;
+      pointer-events: none;
+    }
+
+    .v-frac .v-den {
+      padding: 2px 6px 0;
+      display: block;
+      text-align: center;
+      min-width: 24px;
+      pointer-events: none;
+    }
+
+    .math-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
+    }
+
+    .drag-tile.phrase-tile {
+      border-color: #c4b5fd;
+      background: var(--purple-soft);
+      color: #5b21b6;
+    }
+
+    .drag-tile.num-tile {
+      border-color: #93c5fd;
+      background: var(--brand-soft);
+      color: #1e40af;
+    }
+
+    .drag-tile:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(15, 23, 42, 0.1);
+    }
+
+    .drag-tile:active {
+      cursor: grabbing;
+    }
+
+    .drag-tile.selected-tile {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+      transform: translateY(-2px);
+    }
+
+    /* 3-Line Solution Board ("วิธีทำ") */
+    .solution-board {
+      background: #ffffff;
+      border: 2px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      position: relative;
+    }
+
+    .board-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 2px solid var(--surface-alt);
+    }
+
+    .witheetam-badge {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--brand);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .solution-lines {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .sol-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .sol-line-num {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #e2e8f0;
+      color: #334155;
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+
+    .fixed-one {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      height: 42px;
+      padding: 0 12px;
+      border-radius: var(--radius-sm);
+      background: #e2e8f0;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    /* Drop Zone Slot */
+    .drop-slot {
+      font-family: var(--font);
+      min-width: 128px;
+      min-height: 54px;
+      height: auto;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      border: 2px dashed #94a3b8;
+      background: #ffffff;
+      color: #64748b;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .drop-slot.slot-phrase {
+      min-width: 150px;
+      border-color: #a78bfa;
+      background: #faf5ff;
+      color: #6d28d9;
+    }
+
+    .drop-slot.slot-num {
+      min-width: 110px;
+      border-color: #60a5fa;
+      background: #f0f9ff;
+      color: #1d4ed8;
+    }
+
+    .drop-slot.slot-expr {
+      min-width: 145px;
+      border-color: #60a5fa;
+      background: #f0f9ff;
+      color: #1d4ed8;
+    }
+
+    .drop-slot.drag-over,
+    .drop-slot.active-target {
+      border-style: solid;
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #92400e;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+    }
+
+    .drop-slot.filled {
+      border-style: solid;
+      font-size: 17px;
+      font-weight: 800;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+
+    .drop-slot.filled.slot-phrase {
+      border-color: #8b5cf6;
+      background: var(--purple-soft);
+      color: #4c1d95;
+    }
+
+    .drop-slot.filled.slot-num,
+    .drop-slot.filled.slot-expr {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+      color: #1e3a8a;
+    }
+
+    .drop-slot.slot-correct {
+      border-style: solid !important;
+      border-color: var(--success) !important;
+      background: var(--success-soft) !important;
+      color: #14532d !important;
+    }
+
+    .drop-slot.slot-wrong {
+      border-style: solid !important;
+      border-color: var(--danger) !important;
+      background: var(--danger-soft) !important;
+      color: #7f1d1d !important;
+    }
+
+    .slot-clear {
+      font-size: 13px;
+      opacity: 0.65;
+      margin-left: 4px;
+    }
+
+    .drop-slot:hover .slot-clear {
+      opacity: 1;
+    }
+
+    /* Action Bar */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .btn {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      transition: all 0.15s ease;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: var(--brand-ink);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--brand-hover);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--surface-alt);
+      border-color: #cbd5e1;
+    }
+
+    .btn-outline-brand {
+      background: var(--brand-soft);
+      color: var(--brand);
+      border-color: #bfdbfe;
+    }
+
+    .btn-outline-brand:hover:not(:disabled) {
+      background: #dbeafe;
+    }
+
+    /* Explanation Panel */
+    .explanation-box {
+      margin-top: var(--space-6);
+      border-radius: var(--radius-md);
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      overflow: hidden;
+    }
+
+    .feedback-banner {
+      padding: var(--space-4) var(--space-6);
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .feedback-banner.correct {
+      background: var(--success-soft);
+      color: #14532d;
+      border-bottom: 1px solid #bbf7d0;
+    }
+
+    .feedback-banner.wrong {
+      background: var(--danger-soft);
+      color: #7f1d1d;
+      border-bottom: 1px solid #fecaca;
+    }
+
+    .feedback-banner.neutral {
+      background: var(--brand-soft);
+      color: #1e3a8a;
+      border-bottom: 1px solid #bfdbfe;
+    }
+
+    .explanation-body {
+      padding: var(--space-6);
+    }
+
+    .exp-section-title {
+      margin: 0 0 var(--space-3);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .analysis-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-4);
+    }
+
+    .analysis-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .analysis-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .rule-steps {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .rule-line {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 16px;
+    }
+
+    .rule-line:last-child {
+      border-bottom: none;
+    }
+
+    .line-badge {
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 2px 10px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .tip-box {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: #78350f;
+    }
+
+    .catalog-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .summary-banner {
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .summary-banner h2 {
+      margin: 0 0 4px;
+      font-size: 22px;
+    }
+
+    .summary-banner p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 15px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: var(--space-4);
+      }
+      .card, .solution-board, .bank-panel {
+        padding: var(--space-4);
+      }
+      .question-text {
+        font-size: 18px;
+      }
+      .sol-line {
+        font-size: 16px;
+        padding: 12px;
+      }
+      .drop-slot {
+        min-width: 96px;
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-badge">ป.5</div>
+        <div>
+          <h1 class="brand-title">เกมลากวางพิชิตโจทย์ปัญหาบัญญัติไตรยางค์</h1>
+          <p class="brand-subtitle">คณิตศาสตร์ ชั้นประถมศึกษาปีที่ 5 • ฝึกลากวางแสดงวิธีทำ 3 บรรทัด จำนวน 10 ข้อ พร้อมเฉลยละเอียด</p>
+        </div>
+      </div>
+
+      <div class="mode-tabs" role="tablist" aria-label="โหมดการใช้งาน">
+        <button type="button" class="tab-btn active" id="tabPlayBtn" role="tab" aria-selected="true">
+          โหมดเกมลากวางวิธีทำ (10 ด่าน)
+        </button>
+        <button type="button" class="tab-btn" id="tabCatalogBtn" role="tab" aria-selected="false">
+          รวมโจทย์และเฉลยละเอียด (10 ข้อ)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- PLAY MODE VIEW -->
+    <section id="playView">
+      <div class="stage-strip">
+        <div class="stage-dots" id="stageDots" aria-label="เลือกข้อ"></div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="score-pill" id="scoreDisplay">ผ่านแล้ว: 0 / 10 ด่าน</div>
+          <button type="button" class="btn btn-secondary" id="resetGameBtn" style="padding: 8px 12px; font-size: 13px;">
+            เริ่มเล่นใหม่ทั้งหมด
+          </button>
+        </div>
+      </div>
+
+      <!-- Complete Banner when all 10 answered -->
+      <div id="completeBanner" class="summary-banner hidden">
+        <div>
+          <h2 id="completeTitle">ภารกิจเสร็จสมบูรณ์!</h2>
+          <p id="completeSub">คุณผ่านการแสดงวิธีทำเทียบบัญญัติไตรยางค์ครบทั้ง 10 ด่านแล้ว</p>
+        </div>
+        <button type="button" class="btn btn-secondary" id="playAgainBannerBtn">
+          เริ่มเล่นใหม่อีกครั้ง
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="question-meta">
+          <span class="stage-tag" id="qStageTag">ด่านที่ 1 จาก 10</span>
+          <span class="skill-tag" id="qSkillTag">การเทียบบัญญัติไตรยางค์โดยตรง</span>
+        </div>
+
+        <div class="question-box">
+          <p class="question-text" id="qText"></p>
+        </div>
+
+        <div class="workspace-grid">
+          <!-- Draggable Cards Bank -->
+          <div class="bank-panel">
+            <div class="panel-header">
+              <h2 class="panel-title">คลังบัตรคำและตัวเลข</h2>
+              <span class="helper-hint">วิธีเล่น: ลากบัตรไปวางในช่องว่าง หรือ คลิกเลือกบัตรแล้วคลิกช่องว่างที่ต้องการเติม (บัตรข้อความใช้ซ้ำได้ทุกบรรทัด)</span>
+            </div>
+            <div class="bank-groups">
+              <div class="bank-row">
+                <span class="bank-row-label">บัตรข้อความโจทย์:</span>
+                <div id="phraseBank" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
+              </div>
+              <div class="bank-row">
+                <span class="bank-row-label">บัตรตัวเลข/วิธีคิด:</span>
+                <div id="numberBank" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3-Line Solution Board -->
+          <div class="solution-board">
+            <div class="board-header">
+              <span class="witheetam-badge">วิธีทำ</span>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="btn btn-secondary" id="clearSlotsBtn" style="padding: 6px 12px; font-size: 13px;">
+                  ล้างช่องว่างข้อนี้
+                </button>
+                <button type="button" class="btn btn-outline-brand" id="fillAnswerBtn" style="padding: 6px 12px; font-size: 13px;">
+                  เติมเฉลยลงในช่อง
+                </button>
+              </div>
+            </div>
+
+            <div class="solution-lines" id="solutionLines">
+              <!-- Populated dynamically per question -->
+            </div>
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary" id="prevBtn">
+              ← ข้อก่อนหน้า
+            </button>
+            <button type="button" class="btn btn-secondary" id="nextBtn">
+              ข้อถัดไป →
+            </button>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" id="checkBtn">
+              ✓ ตรวจคำตอบวิธีทำ
+            </button>
+            <button type="button" class="btn btn-outline-brand" id="toggleExplainBtn">
+              ดูเฉลยและวิธีคิดละเอียด
+            </button>
+          </div>
+        </div>
+
+        <!-- Explanation Container -->
+        <div id="explanationContainer" class="explanation-box hidden">
+          <div id="feedbackBanner" class="feedback-banner neutral"></div>
+          <div class="explanation-body" id="explanationBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL 10 QUESTIONS & DETAILED SOLUTIONS VIEW -->
+    <section id="catalogView" class="hidden">
+      <div class="catalog-list" id="catalogList"></div>
+    </section>
+  </main>
+
+  <script>
+    const QUESTIONS = [
+      {
+        id: 1,
+        title: "ด่านที่ 1: ร้านเครื่องเขียนหน้าโรงเรียน",
+        skill: "การหาผลลัพธ์โดยตรง (ราคาสินค้า)",
+        question: "สมุดวาดเขียน 4 เล่ม ราคา 72 บาท ถ้าใบบัวต้องการซื้อสมุดวาดเขียนแบบเดียวกัน 9 เล่ม จะต้องจ่ายเงินทั้งหมดกี่บาท?",
+        phraseCorrect: "สมุดวาดเขียน",
+        phraseDistractor: "จ่ายเงินทั้งหมด",
+        unitLeft: "เล่ม",
+        middleWord: "ราคา",
+        unitRight: "บาท",
+        numLeft1: "4",
+        numRight1: "72",
+        exprLine2: "72/4",
+        numLeft3: "9",
+        exprLine3: "9 × 72/4",
+        finalAns: "162",
+        numDistractors: ["72/9", "9 × 72/9", "144"],
+        answerText: "162 บาท",
+        given: "สมุดวาดเขียน 4 เล่ม ราคา 72 บาท",
+        asked: "สมุดวาดเขียน 9 เล่ม ราคาทั้งหมดกี่บาท (ต้องการหาหน่วย 'บาท' จึงวางหน่วย 'บาท' ไว้ทางขวามือ)",
+        line1: "สมุดวาดเขียน 4 เล่ม ราคา 72 บาท",
+        line2: "สมุดวาดเขียน 1 เล่ม ราคา 72/4 = 18 บาท",
+        line3: "สมุดวาดเขียน 9 เล่ม ราคา 9 × 72/4 = 162 บาท",
+        tip: "ระวังสับสน! บรรทัดที่ 2 เทียบสมุด 1 เล่ม ต้องนำราคา 72 บาท หารด้วยจำนวนเล่มที่โจทย์บอกคือ 4 เล่ม (72/4) ไม่ใช่หารด้วย 9"
+      },
+      {
+        id: 2,
+        title: "ด่านที่ 2: สวนส้มคุณตา",
+        skill: "การหาผลลัพธ์โดยตรง (การบรรจุสิ่งของ)",
+        question: "ชาวสวนจัดส้มใส่ตะกร้า 6 ใบ ใบละเท่าๆ กัน ใช้ส้มทั้งหมด 150 ผล ถ้ามีตะกร้า 15 ใบ จะต้องใช้ส้มทั้งหมดกี่ผล?",
+        phraseCorrect: "จัดส้มใส่ตะกร้า",
+        phraseDistractor: "ใช้ส้มทั้งหมด",
+        unitLeft: "ใบ",
+        middleWord: "ใช้ส้ม",
+        unitRight: "ผล",
+        numLeft1: "6",
+        numRight1: "150",
+        exprLine2: "150/6",
+        numLeft3: "15",
+        exprLine3: "15 × 150/6",
+        finalAns: "375",
+        numDistractors: ["150/15", "15 × 150/15", "350"],
+        answerText: "375 ผล",
+        given: "ตะกร้า 6 ใบ ใช้ส้ม 150 ผล",
+        asked: "ตะกร้า 15 ใบ ต้องใช้ส้มกี่ผล (วางหน่วย 'ผล' ไว้ทางขวามือ)",
+        line1: "จัดส้มใส่ตะกร้า 6 ใบ ใช้ส้ม 150 ผล",
+        line2: "จัดส้มใส่ตะกร้า 1 ใบ ใช้ส้ม 150/6 = 25 ผล",
+        line3: "จัดส้มใส่ตะกร้า 15 ใบ ใช้ส้ม 15 × 150/6 = 375 ผล",
+        tip: "เขียนในรูปเศษส่วน 15 × 150/6 แล้วตัดทอน 150 ÷ 6 = 25 ก่อนนำไปคูณกับ 15 จะได้ 15 × 25 = 375 ผล"
+      },
+      {
+        id: 3,
+        title: "ด่านที่ 3: การเดินทางของรถไฟด่วน",
+        skill: "การหาผลลัพธ์โดยตรง (ระยะทางและเวลา)",
+        question: "รถไฟขบวนหนึ่งแล่นด้วยความเร็วคงที่ ในเวลา 3 ชั่วโมง แล่นได้ระยะทาง 240 กิโลเมตร ถ้ารถไฟขบวนนี้แล่นนาน 7 ชั่วโมง จะได้ระยะทางกี่กิโลเมตร?",
+        phraseCorrect: "รถไฟแล่นเวลา",
+        phraseDistractor: "ระยะทางทั้งหมด",
+        unitLeft: "ชั่วโมง",
+        middleWord: "ได้ระยะทาง",
+        unitRight: "กิโลเมตร",
+        numLeft1: "3",
+        numRight1: "240",
+        exprLine2: "240/3",
+        numLeft3: "7",
+        exprLine3: "7 × 240/3",
+        finalAns: "560",
+        numDistractors: ["240/7", "7 × 240/7", "480"],
+        answerText: "560 กิโลเมตร",
+        given: "เวลา 3 ชั่วโมง แล่นได้ระยะทาง 240 กิโลเมตร",
+        asked: "เวลา 7 ชั่วโมง แล่นได้ระยะทางกี่กิโลเมตร (วางหน่วย 'กิโลเมตร' ไว้ทางขวามือ)",
+        line1: "รถไฟแล่นเวลา 3 ชั่วโมง ได้ระยะทาง 240 กิโลเมตร",
+        line2: "รถไฟแล่นเวลา 1 ชั่วโมง ได้ระยะทาง 240/3 = 80 กิโลเมตร",
+        line3: "รถไฟแล่นเวลา 7 ชั่วโมง ได้ระยะทาง 7 × 240/3 = 560 กิโลเมตร",
+        tip: "ระยะทางในเวลา 1 ชั่วโมง (240/3 = 80 กิโลเมตร) คือความเร็วต่อชั่วโมง เมื่อแล่น 7 ชั่วโมงจึงนำ 7 ไปคูณ"
+      },
+      {
+        id: 4,
+        title: "ด่านที่ 4: โรงครัวทำขนมไทย",
+        skill: "การตัดทอนเศษส่วนในบัญญัติไตรยางค์",
+        question: "การทำขนมชั้น 8 ถาด ต้องใช้น้ำตาลทราย 6 กิโลกรัม ถ้าแม่ค้าต้องการทำขนมชั้น 20 ถาด จะต้องใช้น้ำตาลทรายกี่กิโลกรัม?",
+        phraseCorrect: "ทำขนมชั้น",
+        phraseDistractor: "ใช้น้ำตาลทราย",
+        unitLeft: "ถาด",
+        middleWord: "ใช้น้ำตาลทราย",
+        unitRight: "กิโลกรัม",
+        numLeft1: "8",
+        numRight1: "6",
+        exprLine2: "6/8",
+        numLeft3: "20",
+        exprLine3: "20 × 6/8",
+        finalAns: "15",
+        numDistractors: ["8/6", "20 × 8/6", "16"],
+        answerText: "15 กิโลกรัม",
+        given: "ขนมชั้น 8 ถาด ใช้น้ำตาลทราย 6 กิโลกรัม",
+        asked: "ขนมชั้น 20 ถาด ใช้น้ำตาลทรายกี่กิโลกรัม (วางหน่วย 'กิโลกรัม' ไว้ทางขวามือ)",
+        line1: "ทำขนมชั้น 8 ถาด ใช้น้ำตาลทราย 6 กิโลกรัม",
+        line2: "ทำขนมชั้น 1 ถาด ใช้น้ำตาลทราย 6/8 กิโลกรัม",
+        line3: "ทำขนมชั้น 20 ถาด ใช้น้ำตาลทราย 20 × 6/8 = 15 กิโลกรัม",
+        tip: "เมื่อบรรทัดที่ 2 หารแล้วยังไม่เป็นจำนวนนับ (6 ÷ 8) ให้เขียนเป็นเศษส่วน 6/8 ไว้ก่อน แล้วค่อยคูณ 20 ในบรรทัดที่ 3 (120 ÷ 8 = 15)"
+      },
+      {
+        id: 5,
+        title: "ด่านที่ 5: น้ำผลไม้เพื่อสุขภาพ",
+        skill: "การหาผลลัพธ์โดยตรง (ปริมาตรและหน่วยมิลลิลิตร)",
+        question: "น้ำส้มคั้น 5 ขวด มีปริมาตรรวมกัน 1,750 มิลลิลิตร ถ้าน้ำส้มคั้นขนาดเดียวกัน 12 ขวด จะมีปริมาตรรวมกันกี่มิลลิลิตร?",
+        phraseCorrect: "น้ำส้มคั้น",
+        phraseDistractor: "ปริมาตรรวมกัน",
+        unitLeft: "ขวด",
+        middleWord: "มีปริมาตร",
+        unitRight: "มิลลิลิตร",
+        numLeft1: "5",
+        numRight1: "1,750",
+        exprLine2: "1,750/5",
+        numLeft3: "12",
+        exprLine3: "12 × 1,750/5",
+        finalAns: "4,200",
+        numDistractors: ["1,750/12", "12 × 1,750/12", "3,800"],
+        answerText: "4,200 มิลลิลิตร",
+        given: "น้ำส้มคั้น 5 ขวด มีปริมาตร 1,750 มิลลิลิตร",
+        asked: "น้ำส้มคั้น 12 ขวด มีปริมาตรกี่มิลลิลิตร (วางหน่วย 'มิลลิลิตร' ไว้ทางขวามือ)",
+        line1: "น้ำส้มคั้น 5 ขวด มีปริมาตร 1,750 มิลลิลิตร",
+        line2: "น้ำส้มคั้น 1 ขวด มีปริมาตร 1,750/5 = 350 มิลลิลิตร",
+        line3: "น้ำส้มคั้น 12 ขวด มีปริมาตร 12 × 1,750/5 = 4,200 มิลลิลิตร",
+        tip: "หาปริมาตรของน้ำส้ม 1 ขวดก่อน (1,750/5 = 350 มิลลิลิตร) แล้วจึงคูณด้วย 12 ขวด ได้ 4,200 มิลลิลิตร"
+      },
+      {
+        id: 6,
+        title: "ด่านที่ 6: ร้านขายเสื้อกีฬา (ฝึกสลับฝั่งหน่วย)",
+        skill: "การสลับฝั่งหน่วยที่ต้องการหาไว้ทางขวามือ",
+        question: "เสื้อกีฬา 5 ตัว ราคา 800 บาท ถ้าโค้ชฟุตบอลมีเงิน 2,400 บาท จะซื้อเสื้อกีฬาราคาเดียวกันได้ทั้งหมดกี่ตัว?",
+        phraseCorrect: "เงิน",
+        phraseDistractor: "เสื้อกีฬา",
+        unitLeft: "บาท",
+        middleWord: "ซื้อเสื้อกีฬาได้",
+        unitRight: "ตัว",
+        numLeft1: "800",
+        numRight1: "5",
+        exprLine2: "5/800",
+        numLeft3: "2,400",
+        exprLine3: "2,400 × 5/800",
+        finalAns: "15",
+        numDistractors: ["800/5", "2,400 × 800/5", "12"],
+        answerText: "15 ตัว",
+        given: "เสื้อกีฬา 5 ตัว ราคา 800 บาท",
+        asked: "มีเงิน 2,400 บาท ซื้อเสื้อได้กี่ตัว (โจทย์ถามจำนวน 'ตัว' ต้องสลับเอาหน่วย 'ตัว' ไปไว้ทางขวามือ!)",
+        line1: "เงิน 800 บาท ซื้อเสื้อกีฬาได้ 5 ตัว",
+        line2: "เงิน 1 บาท ซื้อเสื้อกีฬาได้ 5/800 ตัว",
+        line3: "เงิน 2,400 บาท ซื้อเสื้อกีฬาได้ 2,400 × 5/800 = 15 ตัว",
+        tip: "จุดสำคัญ ป.5: โจทย์บอก 'เสื้อกีฬา 5 ตัว ราคา 800 บาท' แต่ถามว่า 'ซื้อได้กี่ตัว' จึงต้องสลับเอา 'เงิน 800 บาท' ไว้ซ้าย และเอา '5 ตัว' ไว้ขวา"
+      },
+      {
+        id: 7,
+        title: "ด่านที่ 7: โรงงานพับกล่องกระดาษ",
+        skill: "การวางหน่วยเวลาไว้ทางขวามือ",
+        question: "เครื่องจักรพับกล่องกระดาษได้ 180 กล่อง ในเวลา 6 นาที ถ้าต้องการพับกล่องกระดาษ 450 กล่อง เครื่องจักรจะต้องใช้เวลากี่นาที?",
+        phraseCorrect: "พับกล่องกระดาษ",
+        phraseDistractor: "เครื่องจักรใช้เวลา",
+        unitLeft: "กล่อง",
+        middleWord: "ใช้เวลา",
+        unitRight: "นาที",
+        numLeft1: "180",
+        numRight1: "6",
+        exprLine2: "6/180",
+        numLeft3: "450",
+        exprLine3: "450 × 6/180",
+        finalAns: "15",
+        numDistractors: ["180/6", "450 × 180/6", "12"],
+        answerText: "15 นาที",
+        given: "พับกล่อง 180 กล่อง ใช้เวลา 6 นาที",
+        asked: "พับกล่อง 450 กล่อง ต้องใช้เวลากี่นาที (โจทย์ถาม 'นาที' จึงวางหน่วย 'นาที' ไว้ทางขวามือ)",
+        line1: "พับกล่องกระดาษ 180 กล่อง ใช้เวลา 6 นาที",
+        line2: "พับกล่องกระดาษ 1 กล่อง ใช้เวลา 6/180 นาที",
+        line3: "พับกล่องกระดาษ 450 กล่อง ใช้เวลา 450 × 6/180 = 15 นาที",
+        tip: "ระวังอย่าเอา 180 ตั้งหารด้วย 6 เพราะหน่วยทางขวาคือ 6 นาที ดังนั้นบรรทัดที่ 2 จึงเป็น 6/180 นาที"
+      },
+      {
+        id: 8,
+        title: "ด่านที่ 8: ทาสีรั้วโรงเรียน",
+        skill: "การตัดทอนเศษส่วนและทศนิยม ป.5",
+        question: "สีทาบ้าน 4 กระป๋อง ใช้ทารั้วได้พื้นที่ 30 ตารางเมตร ถ้าช่างมีสีทาบ้าน 10 กระป๋อง จะทารั้วได้พื้นที่กี่ตารางเมตร?",
+        phraseCorrect: "สีทาบ้าน",
+        phraseDistractor: "พื้นที่รั้วโรงเรียน",
+        unitLeft: "กระป๋อง",
+        middleWord: "ทารั้วได้พื้นที่",
+        unitRight: "ตารางเมตร",
+        numLeft1: "4",
+        numRight1: "30",
+        exprLine2: "30/4",
+        numLeft3: "10",
+        exprLine3: "10 × 30/4",
+        finalAns: "75",
+        numDistractors: ["30/10", "10 × 30/10", "70"],
+        answerText: "75 ตารางเมตร",
+        given: "สีทาบ้าน 4 กระป๋อง ทารั้วได้ 30 ตารางเมตร",
+        asked: "สีทาบ้าน 10 กระป๋อง ทารั้วได้กี่ตารางเมตร (วางหน่วย 'ตารางเมตร' ไว้ทางขวามือ)",
+        line1: "สีทาบ้าน 4 กระป๋อง ทารั้วได้พื้นที่ 30 ตารางเมตร",
+        line2: "สีทาบ้าน 1 กระป๋อง ทารั้วได้พื้นที่ 30/4 ตารางเมตร",
+        line3: "สีทาบ้าน 10 กระป๋อง ทารั้วได้พื้นที่ 10 × 30/4 = 75 ตารางเมตร",
+        tip: "คำนวณบรรทัดที่ 3 จาก (10 × 30) ÷ 4 = 300 ÷ 4 = 75 ตารางเมตร"
+      },
+      {
+        id: 9,
+        title: "ด่านที่ 9: แปลงเกษตรพอเพียง (ฝึกสลับฝั่งหน่วย)",
+        skill: "การสลับฝั่งหน่วยที่ต้องการหาไว้ทางขวามือ",
+        question: "เมล็ดพันธุ์ผักบุ้ง 3 ซอง ใช้หว่านในแปลงปลูกได้พื้นที่ 12 ตารางเมตร ถ้าแปลงเกษตรของโรงเรียนมีพื้นที่ 44 ตารางเมตร จะต้องใช้เมล็ดพันธุ์ผักบุ้งกี่ซอง?",
+        phraseCorrect: "พื้นที่แปลงปลูก",
+        phraseDistractor: "เมล็ดพันธุ์ผักบุ้ง",
+        unitLeft: "ตารางเมตร",
+        middleWord: "ใช้เมล็ดพันธุ์",
+        unitRight: "ซอง",
+        numLeft1: "12",
+        numRight1: "3",
+        exprLine2: "3/12",
+        numLeft3: "44",
+        exprLine3: "44 × 3/12",
+        finalAns: "11",
+        numDistractors: ["12/3", "44 × 12/3", "9"],
+        answerText: "11 ซอง",
+        given: "เมล็ดพันธุ์ 3 ซอง หว่านได้พื้นที่ 12 ตารางเมตร",
+        asked: "พื้นที่ 44 ตารางเมตร ต้องใช้เมล็ดพันธุ์กี่ซอง (โจทย์ถามจำนวน 'ซอง' ต้องสลับเอาหน่วย 'ซอง' ไว้ทางขวามือ)",
+        line1: "พื้นที่แปลงปลูก 12 ตารางเมตร ใช้เมล็ดพันธุ์ 3 ซอง",
+        line2: "พื้นที่แปลงปลูก 1 ตารางเมตร ใช้เมล็ดพันธุ์ 3/12 ซอง",
+        line3: "พื้นที่แปลงปลูก 44 ตารางเมตร ใช้เมล็ดพันธุ์ 44 × 3/12 = 11 ซอง",
+        tip: "สิ่งที่โจทย์ถามคือ 'กี่ซอง' จึงต้องขึ้นต้นบรรทัดด้วย 'พื้นที่แปลงปลูก 12 ตารางเมตร' ทางซ้าย และวาง '3 ซอง' ไว้ทางขวา"
+      },
+      {
+        id: 10,
+        title: "ด่านที่ 10: ด่านบอส! แลกแต้มสะสมชมรมรักการอ่าน",
+        skill: "การสลับฝั่งหน่วยและโจทย์ประยุกต์",
+        question: "การอ่านหนังสือทุกๆ 6 เล่ม จะได้รับดาวสะสม 15 ดวง ถ้าต้นกล้าต้องการสะสมดาวให้ครบ 45 ดวง เพื่อแลกรางวัลใหญ่ ต้นกล้าจะต้องอ่านหนังสือกี่เล่ม?",
+        phraseCorrect: "ดาวสะสม",
+        phraseDistractor: "อ่านหนังสือ",
+        unitLeft: "ดวง",
+        middleWord: "มาจากการอ่านหนังสือ",
+        unitRight: "เล่ม",
+        numLeft1: "15",
+        numRight1: "6",
+        exprLine2: "6/15",
+        numLeft3: "45",
+        exprLine3: "45 × 6/15",
+        finalAns: "18",
+        numDistractors: ["15/6", "45 × 15/6", "15"],
+        answerText: "18 เล่ม",
+        given: "อ่านหนังสือ 6 เล่ม ได้รับดาวสะสม 15 ดวง",
+        asked: "ต้องการดาวสะสม 45 ดวง ต้องอ่านหนังสือกี่เล่ม (โจทย์ถามจำนวน 'เล่ม' จึงสลับเอาหน่วย 'เล่ม' ไว้ทางขวามือ)",
+        line1: "ดาวสะสม 15 ดวง มาจากการอ่านหนังสือ 6 เล่ม",
+        line2: "ดาวสะสม 1 ดวง มาจากการอ่านหนังสือ 6/15 เล่ม",
+        line3: "ดาวสะสม 45 ดวง มาจากการอ่านหนังสือ 45 × 6/15 = 18 เล่ม",
+        tip: "ต้องการหาจำนวน 'เล่ม' จึงนำ 'ดาวสะสม 15 ดวง' ไว้ด้านซ้าย และนำ '6 เล่ม' ไว้ด้านขวา จากนั้นคำนวณ 45 × 6/15 = 18 เล่ม"
+      }
+    ];
+
+    // 9 slots per question:
+    // 0: phrase1, 1: numLeft1, 2: numRight1
+    // 3: phrase2, 4: exprLine2
+    // 5: phrase3, 6: numLeft3, 7: exprLine3, 8: finalAns
+    const SLOT_KEYS = [
+      'phrase1', 'numLeft1', 'numRight1',
+      'phrase2', 'exprLine2',
+      'phrase3', 'numLeft3', 'exprLine3', 'finalAns'
+    ];
+
+    function getExpectedForSlot(q, slotKey) {
+      switch (slotKey) {
+        case 'phrase1':
+        case 'phrase2':
+        case 'phrase3':
+          return q.phraseCorrect;
+        case 'numLeft1':
+          return q.numLeft1;
+        case 'numRight1':
+          return q.numRight1;
+        case 'exprLine2':
+          return q.exprLine2;
+        case 'numLeft3':
+          return q.numLeft3;
+        case 'exprLine3':
+          return q.exprLine3;
+        case 'finalAns':
+          return q.finalAns;
+        default:
+          return '';
+      }
+    }
+
+    // State
+    let currentIndex = 0;
+    let userSlots = QUESTIONS.map(() => ({}));
+    let stageStatus = new Array(QUESTIONS.length).fill(null); // null | 'correct' | 'wrong'
+    let checkedSlots = QUESTIONS.map(() => ({})); // slotKey -> boolean
+    let showExplanation = new Array(QUESTIONS.length).fill(false);
+
+    // Selection state for click-to-place
+    let selectedTileValue = null;
+    let activeTargetSlotKey = null;
+
+    // DOM Elements
+    const tabPlayBtn = document.getElementById('tabPlayBtn');
+    const tabCatalogBtn = document.getElementById('tabCatalogBtn');
+    const playView = document.getElementById('playView');
+    const catalogView = document.getElementById('catalogView');
+
+    const stageDots = document.getElementById('stageDots');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const resetGameBtn = document.getElementById('resetGameBtn');
+    const completeBanner = document.getElementById('completeBanner');
+    const completeTitle = document.getElementById('completeTitle');
+    const completeSub = document.getElementById('completeSub');
+    const playAgainBannerBtn = document.getElementById('playAgainBannerBtn');
+
+    const qStageTag = document.getElementById('qStageTag');
+    const qSkillTag = document.getElementById('qSkillTag');
+    const qText = document.getElementById('qText');
+    const phraseBank = document.getElementById('phraseBank');
+    const numberBank = document.getElementById('numberBank');
+    const solutionLines = document.getElementById('solutionLines');
+
+    const clearSlotsBtn = document.getElementById('clearSlotsBtn');
+    const fillAnswerBtn = document.getElementById('fillAnswerBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const checkBtn = document.getElementById('checkBtn');
+    const toggleExplainBtn = document.getElementById('toggleExplainBtn');
+
+    const explanationContainer = document.getElementById('explanationContainer');
+    const feedbackBanner = document.getElementById('feedbackBanner');
+    const explanationBody = document.getElementById('explanationBody');
+    const catalogList = document.getElementById('catalogList');
+
+    function formatMathHTML(text) {
+      if (!text) return '';
+      return String(text).replace(/([\d,]+)\s*\/\s*([\d,]+)/g, (match, num, den) => {
+        return `<span class="v-frac"><span class="v-num">${num}</span><span class="v-den">${den}</span></span>`;
+      });
+    }
+
+    function buildExplanationMarkup(q) {
+      return `
+        <h3 class="exp-section-title">เฉลยคำตอบที่ถูกต้อง: ${q.answerText}</h3>
+        <div class="analysis-grid">
+          <div class="analysis-item">
+            <div class="analysis-label">1. สิ่งที่โจทย์กำหนด</div>
+            <div class="analysis-value">${q.given}</div>
+          </div>
+          <div class="analysis-item">
+            <div class="analysis-label">2. สิ่งที่โจทย์ถามและการวางหน่วย</div>
+            <div class="analysis-value">${q.asked}</div>
+          </div>
+        </div>
+
+        <div class="rule-steps">
+          <div class="rule-line">
+            <span class="line-badge">บรรทัดที่ 1 (สิ่งที่รู้)</span>
+            <span>${formatMathHTML(q.line1)}</span>
+          </div>
+          <div class="rule-line">
+            <span class="line-badge">บรรทัดที่ 2 (เทียบ 1 หน่วย)</span>
+            <span>${formatMathHTML(q.line2)}</span>
+          </div>
+          <div class="rule-line">
+            <span class="line-badge">บรรทัดที่ 3 (หาคำตอบ)</span>
+            <strong>${formatMathHTML(q.line3)}</strong>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <strong>เทคนิคช่วยจำ ป.5:</strong> ${formatMathHTML(q.tip)}
+        </div>
+      `;
+    }
+
+    function computeScore() {
+      return stageStatus.filter(s => s === 'correct').length;
+    }
+
+    function renderStageDots() {
+      stageDots.innerHTML = '';
+      QUESTIONS.forEach((q, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'stage-dot';
+        if (idx === currentIndex) btn.classList.add('current');
+        if (stageStatus[idx] === 'correct') btn.classList.add('correct');
+        if (stageStatus[idx] === 'wrong') btn.classList.add('wrong');
+
+        btn.textContent = idx + 1;
+        btn.setAttribute('aria-label', `ข้อที่ ${idx + 1}`);
+        btn.addEventListener('click', () => {
+          currentIndex = idx;
+          selectedTileValue = null;
+          activeTargetSlotKey = null;
+          renderCurrentQuestion();
+        });
+        stageDots.appendChild(btn);
+      });
+
+      const score = computeScore();
+      scoreDisplay.textContent = `ผ่านแล้ว: ${score} / 10 ด่าน`;
+
+      if (score === QUESTIONS.length) {
+        completeBanner.classList.remove('hidden');
+        completeTitle.textContent = `เก่งมาก! คุณพิชิตวิธีทำบัญญัติไตรยางค์ครบทั้ง 10 ด่านแล้ว!`;
+        completeSub.textContent = `สามารถกดเลือกหมายเลขด่านด้านบนเพื่อทบทวนหรือฝึกซ้ำได้ตลอดเวลา`;
+      } else {
+        completeBanner.classList.add('hidden');
+      }
+    }
+
+    function createTileButton(value, typeClass) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `drag-tile ${typeClass}`;
+      if (selectedTileValue === value) {
+        btn.classList.add('selected-tile');
+      }
+      btn.draggable = true;
+      btn.innerHTML = `<span class="math-inline">${formatMathHTML(value)}</span>`;
+
+      btn.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', value);
+        selectedTileValue = value;
+      });
+
+      btn.addEventListener('click', () => {
+        if (activeTargetSlotKey) {
+          placeValueInSlot(activeTargetSlotKey, value);
+          return;
+        }
+        if (selectedTileValue === value) {
+          selectedTileValue = null;
+        } else {
+          selectedTileValue = value;
+        }
+        renderCurrentQuestion();
+      });
+
+      return btn;
+    }
+
+    function createSlotElement(slotKey, placeholder, slotTypeClass) {
+      const slotsObj = userSlots[currentIndex];
+      const checkObj = checkedSlots[currentIndex];
+      const currentVal = slotsObj[slotKey];
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `drop-slot ${slotTypeClass}`;
+      btn.dataset.slotKey = slotKey;
+
+      if (activeTargetSlotKey === slotKey) {
+        btn.classList.add('active-target');
+      }
+
+      if (currentVal) {
+        btn.classList.add('filled');
+        btn.innerHTML = `<span class="math-inline">${formatMathHTML(currentVal)}</span><span class="slot-clear" title="คลิกเพื่อลบ">×</span>`;
+      } else {
+        btn.textContent = placeholder;
+      }
+
+      if (checkObj[slotKey] === true) {
+        btn.classList.add('slot-correct');
+      } else if (checkObj[slotKey] === false) {
+        btn.classList.add('slot-wrong');
+      }
+
+      // Drag events
+      btn.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        btn.classList.add('drag-over');
+      });
+
+      btn.addEventListener('dragleave', () => {
+        btn.classList.remove('drag-over');
+      });
+
+      btn.addEventListener('drop', (e) => {
+        e.preventDefault();
+        btn.classList.remove('drag-over');
+        const val = e.dataTransfer.getData('text/plain') || selectedTileValue;
+        if (val) {
+          placeValueInSlot(slotKey, val);
+        }
+      });
+
+      // Click event
+      btn.addEventListener('click', () => {
+        if (selectedTileValue) {
+          placeValueInSlot(slotKey, selectedTileValue);
+          return;
+        }
+        if (currentVal) {
+          delete userSlots[currentIndex][slotKey];
+          delete checkedSlots[currentIndex][slotKey];
+          activeTargetSlotKey = slotKey;
+          renderCurrentQuestion();
+        } else {
+          activeTargetSlotKey = (activeTargetSlotKey === slotKey) ? null : slotKey;
+          renderCurrentQuestion();
+        }
+      });
+
+      return btn;
+    }
+
+    function placeValueInSlot(slotKey, value) {
+      userSlots[currentIndex][slotKey] = value;
+      delete checkedSlots[currentIndex][slotKey];
+
+      // Move activeTargetSlotKey to next empty slot if user was filling sequentially
+      const nextEmpty = SLOT_KEYS.find(k => !userSlots[currentIndex][k]);
+      activeTargetSlotKey = nextEmpty || null;
+      selectedTileValue = null;
+      renderCurrentQuestion();
+    }
+
+    function renderCurrentQuestion() {
+      renderStageDots();
+      const q = QUESTIONS[currentIndex];
+      const isExplained = showExplanation[currentIndex];
+
+      qStageTag.textContent = `${q.title} (ข้อ ${currentIndex + 1}/10)`;
+      qSkillTag.textContent = q.skill;
+      qText.textContent = q.question;
+
+      // Render Phrase Bank
+      phraseBank.innerHTML = '';
+      [q.phraseCorrect, q.phraseDistractor].forEach(phrase => {
+        phraseBank.appendChild(createTileButton(phrase, 'phrase-tile'));
+      });
+
+      // Render Number & Expression Bank
+      numberBank.innerHTML = '';
+      const numberItems = [
+        q.numLeft1,
+        q.numRight1,
+        q.numLeft3,
+        q.exprLine2,
+        q.exprLine3,
+        q.finalAns,
+        ...q.numDistractors
+      ];
+      numberItems.forEach(item => {
+        numberBank.appendChild(createTileButton(item, 'num-tile'));
+      });
+
+      // Render 3-Line Solution Board
+      solutionLines.innerHTML = '';
+
+      // Line 1: [เติมโจทย์] [เติมตัวเลข] หน่วยซ้าย คำเชื่อม [เติมตัวเลข] หน่วยขวา
+      const line1El = document.createElement('div');
+      line1El.className = 'sol-line';
+      line1El.appendChild( createBadge('บรรทัดที่ 1') );
+      line1El.appendChild( createSlotElement('phrase1', 'เติมโจทย์', 'slot-phrase') );
+      line1El.appendChild( createSlotElement('numLeft1', 'เติมตัวเลข', 'slot-num') );
+      line1El.appendChild( createSpan(q.unitLeft) );
+      line1El.appendChild( createSpan(q.middleWord) );
+      line1El.appendChild( createSlotElement('numRight1', 'เติมตัวเลข', 'slot-num') );
+      line1El.appendChild( createSpan(q.unitRight) );
+      solutionLines.appendChild(line1El);
+
+      // Line 2: [เติมโจทย์] 1 หน่วยซ้าย คำเชื่อม [เศษส่วนเทียบ 1 หน่วย] หน่วยขวา
+      const line2El = document.createElement('div');
+      line2El.className = 'sol-line';
+      line2El.appendChild( createBadge('บรรทัดที่ 2') );
+      line2El.appendChild( createSlotElement('phrase2', 'เติมโจทย์', 'slot-phrase') );
+      const fixedOne = document.createElement('span');
+      fixedOne.className = 'fixed-one';
+      fixedOne.textContent = '1';
+      line2El.appendChild(fixedOne);
+      line2El.appendChild( createSpan(q.unitLeft) );
+      line2El.appendChild( createSpan(q.middleWord) );
+      line2El.appendChild( createSlotElement('exprLine2', 'เทียบ 1 หน่วย', 'slot-expr') );
+      line2El.appendChild( createSpan(q.unitRight) );
+      solutionLines.appendChild(line2El);
+
+      // Line 3: [เติมโจทย์] [เติมตัวเลข] หน่วยซ้าย คำเชื่อม [วิธีคิดคูณเศษส่วน] = [คำตอบ] หน่วยขวา
+      const line3El = document.createElement('div');
+      line3El.className = 'sol-line';
+      line3El.appendChild( createBadge('บรรทัดที่ 3') );
+      line3El.appendChild( createSlotElement('phrase3', 'เติมโจทย์', 'slot-phrase') );
+      line3El.appendChild( createSlotElement('numLeft3', 'เติมตัวเลข', 'slot-num') );
+      line3El.appendChild( createSpan(q.unitLeft) );
+      line3El.appendChild( createSpan(q.middleWord) );
+      line3El.appendChild( createSlotElement('exprLine3', 'เติมวิธีคิด', 'slot-expr') );
+      line3El.appendChild( createSpan('=') );
+      line3El.appendChild( createSlotElement('finalAns', 'คำตอบ', 'slot-num') );
+      line3El.appendChild( createSpan(q.unitRight) );
+      solutionLines.appendChild(line3El);
+
+      // Navigation buttons
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === QUESTIONS.length - 1;
+
+      toggleExplainBtn.textContent = isExplained
+        ? 'ซ่อนเฉลยและวิธีคิด'
+        : 'ดูเฉลยและวิธีคิดละเอียด';
+
+      if (isExplained) {
+        explanationContainer.classList.remove('hidden');
+        const st = stageStatus[currentIndex];
+        if (st === 'correct') {
+          feedbackBanner.className = 'feedback-banner correct';
+          feedbackBanner.innerHTML = `<span>ถูกต้องครบทั้ง 3 บรรทัด! เก่งมากครับ (+1 คะแนน)</span><span>คำตอบ: ${q.answerText}</span>`;
+        } else if (st === 'wrong') {
+          const correctCount = SLOT_KEYS.filter(k => checkedSlots[currentIndex][k] === true).length;
+          feedbackBanner.className = 'feedback-banner wrong';
+          feedbackBanner.innerHTML = `<span>วางถูก ${correctCount} จาก 9 ช่อง ลองดูช่องสีแดงแล้วปรับแก้ไข หรือดูวิธีคิดด้านล่างครับ</span>`;
+        } else {
+          feedbackBanner.className = 'feedback-banner neutral';
+          feedbackBanner.innerHTML = `<span>แนวคิดและวิธีเทียบบัญญัติไตรยางค์ทีละขั้นตอน</span>`;
+        }
+        explanationBody.innerHTML = buildExplanationMarkup(q);
+      } else {
+        explanationContainer.classList.add('hidden');
+      }
+    }
+
+    function createBadge(text) {
+      const s = document.createElement('span');
+      s.className = 'sol-line-num';
+      s.textContent = text;
+      return s;
+    }
+
+    function createSpan(text) {
+      const s = document.createElement('span');
+      s.textContent = text;
+      return s;
+    }
+
+    function handleCheckSolution() {
+      const q = QUESTIONS[currentIndex];
+      const slotsObj = userSlots[currentIndex];
+      const checkResult = {};
+      let allCorrect = true;
+
+      SLOT_KEYS.forEach(slotKey => {
+        const expected = getExpectedForSlot(q, slotKey);
+        const actual = slotsObj[slotKey];
+        if (actual === expected) {
+          checkResult[slotKey] = true;
+        } else {
+          checkResult[slotKey] = false;
+          allCorrect = false;
+        }
+      });
+
+      checkedSlots[currentIndex] = checkResult;
+      stageStatus[currentIndex] = allCorrect ? 'correct' : 'wrong';
+      showExplanation[currentIndex] = true;
+      renderCurrentQuestion();
+    }
+
+    function handleFillSolution() {
+      const q = QUESTIONS[currentIndex];
+      const filled = {};
+      const checks = {};
+      SLOT_KEYS.forEach(slotKey => {
+        filled[slotKey] = getExpectedForSlot(q, slotKey);
+        checks[slotKey] = true;
+      });
+      userSlots[currentIndex] = filled;
+      checkedSlots[currentIndex] = checks;
+      stageStatus[currentIndex] = 'correct';
+      showExplanation[currentIndex] = true;
+      selectedTileValue = null;
+      activeTargetSlotKey = null;
+      renderCurrentQuestion();
+    }
+
+    function handleClearCurrentSlots() {
+      userSlots[currentIndex] = {};
+      checkedSlots[currentIndex] = {};
+      stageStatus[currentIndex] = null;
+      selectedTileValue = null;
+      activeTargetSlotKey = 'phrase1';
+      renderCurrentQuestion();
+    }
+
+    function renderCatalogView() {
+      catalogList.innerHTML = '';
+      QUESTIONS.forEach((q, idx) => {
+        const card = document.createElement('article');
+        card.className = 'card';
+
+        card.innerHTML = `
+          <div class="question-meta">
+            <span class="stage-tag">${q.title}</span>
+            <span class="skill-tag">${q.skill}</span>
+          </div>
+          <div class="question-box" style="margin-bottom: 16px;">
+            <p class="question-text" style="font-size: 18px; margin-bottom: 0;">ข้อ ${idx + 1}. ${q.question}</p>
+          </div>
+          <div class="explanation-box" style="margin-top: 0;">
+            <div class="explanation-body">
+              ${buildExplanationMarkup(q)}
+            </div>
+          </div>
+        `;
+        catalogList.appendChild(card);
+      });
+    }
+
+    function resetGame() {
+      currentIndex = 0;
+      userSlots = QUESTIONS.map(() => ({}));
+      stageStatus = new Array(QUESTIONS.length).fill(null);
+      checkedSlots = QUESTIONS.map(() => ({}));
+      showExplanation = new Array(QUESTIONS.length).fill(false);
+      selectedTileValue = null;
+      activeTargetSlotKey = 'phrase1';
+      renderCurrentQuestion();
+    }
+
+    // Event Listeners
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        selectedTileValue = null;
+        activeTargetSlotKey = null;
+        renderCurrentQuestion();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < QUESTIONS.length - 1) {
+        currentIndex++;
+        selectedTileValue = null;
+        activeTargetSlotKey = null;
+        renderCurrentQuestion();
+      }
+    });
+
+    checkBtn.addEventListener('click', handleCheckSolution);
+    fillAnswerBtn.addEventListener('click', handleFillSolution);
+    clearSlotsBtn.addEventListener('click', handleClearCurrentSlots);
+
+    toggleExplainBtn.addEventListener('click', () => {
+      showExplanation[currentIndex] = !showExplanation[currentIndex];
+      renderCurrentQuestion();
+    });
+
+    resetGameBtn.addEventListener('click', resetGame);
+    playAgainBannerBtn.addEventListener('click', resetGame);
+
+    tabPlayBtn.addEventListener('click', () => {
+      tabPlayBtn.classList.add('active');
+      tabPlayBtn.setAttribute('aria-selected', 'true');
+      tabCatalogBtn.classList.remove('active');
+      tabCatalogBtn.setAttribute('aria-selected', 'false');
+      playView.classList.remove('hidden');
+      catalogView.classList.add('hidden');
+    });
+
+    tabCatalogBtn.addEventListener('click', () => {
+      tabCatalogBtn.classList.add('active');
+      tabCatalogBtn.setAttribute('aria-selected', 'true');
+      tabPlayBtn.classList.remove('active');
+      tabPlayBtn.setAttribute('aria-selected', 'false');
+      playView.classList.add('hidden');
+      catalogView.classList.remove('hidden');
+    });
+
+    // Initialize with first slot ready
+    activeTargetSlotKey = 'phrase1';
+    renderCurrentQuestion();
+    renderCatalogView();
+  </script>
+</body>
+</html>
